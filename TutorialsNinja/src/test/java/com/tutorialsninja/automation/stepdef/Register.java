@@ -55,5 +55,34 @@ public class Register {
 
        Assert.assertTrue(Elements.isDisplayed(AccountSucessPage.successBread));
    }
+
+   @Then("I should see that the User account is not created")
+    public void i_should_see_that_the_user_account_is_not_created() {
+
+       Assert.assertTrue(Elements.isDisplayed(RegisterPage.registerBreadCrumb));
+    }
+
+   @And("I should see the error message informing the user to fill the mandatory fields")
+    public void i_should_see_the_error_message_informing_the_user_to_fill_the_mandatory_fields() {
+
+        Assert.assertTrue(Elements.isDisplayed(RegisterPage.firsNameWarning));
+        Assert.assertTrue(Elements.isDisplayed(RegisterPage.lastNameWarning));
+        Assert.assertTrue(Elements.isDisplayed(RegisterPage.emailWarning));
+        Assert.assertTrue(Elements.isDisplayed(RegisterPage.telephoneWarning));
+        Assert.assertTrue(Elements.isDisplayed(RegisterPage.passwordWarning));
+        Assert.assertTrue(Elements.isDisplayed(RegisterPage.mainWarning));
+
+    }
+
+   @When("I subscribe to Newsletter")
+    public void i_subscribe_to_newsletter() {
+       Elements.selectRadioButton(RegisterPage.subscribeButton);
+    }
+
+   @Then("I should see that the User is restricted from creating duplicate account")
+    public void i_should_see_that_the_user_is_restricted_from_creating_duplicate_account() {
+        Assert.assertTrue(Elements.isDisplayed(RegisterPage.dangerWarning));
+    }
+
 }
 

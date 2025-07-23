@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HeadersSection {
 
-    public HeadersSection(){
+    public HeadersSection() {
         PageFactory.initElements(Base.driver, this);
     }
 

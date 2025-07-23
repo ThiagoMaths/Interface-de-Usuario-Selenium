@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AccountSucessPage {
 
-    public AccountSucessPage(){
+    public AccountSucessPage() {
 
         PageFactory.initElements(Base.driver, this);
     }

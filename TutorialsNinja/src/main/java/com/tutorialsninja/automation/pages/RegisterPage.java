@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class RegisterPage {
 
-    public RegisterPage(){
+    public RegisterPage() {
 
         PageFactory.initElements(Base.driver, this);
     }
@@ -40,17 +40,42 @@ public class RegisterPage {
     @FindBy(xpath = "//input[@value='Continue']")
     public static WebElement continueButton;
 
+    @FindBy(linkText = "Register")
+    public static WebElement registerBreadCrumb;
 
-    public static void enterAllDetails(DataTable dataTable){
+    @FindBy(css = "input[id='input-firstname']+div")
+    public static WebElement firsNameWarning;
 
-        Map<String,String> map = dataTable.asMap(String.class, String.class);
+    @FindBy(css = "input[id='input-lastname']+div")
+    public static WebElement lastNameWarning;
+
+    @FindBy(css = "input[id='input-email']+div")
+    public static WebElement emailWarning;
+
+    @FindBy(css = "input[id='input-telephone']+div")
+    public static WebElement telephoneWarning;
+
+    @FindBy(css = "input[id='input-password']+div")
+    public static WebElement passwordWarning;
+
+    @FindBy(css = "div[class$='alert-dismissible']")
+    public static WebElement mainWarning;
+
+    @FindBy(xpath = "(//input[@name='newsletter'])[1]")
+    public static WebElement subscribeButton;
+
+    @FindBy(xpath = "(//div[@class='alert alert-danger alert-dismissible'])[1]")
+    public WebElement dangerWarning;
+
+    public static void enterAllDetails(DataTable dataTable) {
+
+        Map<String, String> map = dataTable.asMap(String.class, String.class);
         Elements.TypeText(RegisterPage.firstName, map.get("FirstName"));
         Elements.TypeText(RegisterPage.lastName, map.get("LastName"));
         Elements.TypeText(RegisterPage.email, map.get("Email"));
         Elements.TypeText(RegisterPage.telephone, map.get("Telephone"));
         Elements.TypeText(RegisterPage.password, map.get("Password"));
         Elements.TypeText(RegisterPage.confirmPassword, map.get("Password"));
-
 
     }
 }
