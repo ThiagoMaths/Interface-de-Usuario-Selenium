@@ -65,7 +65,7 @@ public class RegisterPage {
     public static WebElement subscribeButton;
 
     @FindBy(xpath = "(//div[@class='alert alert-danger alert-dismissible'])[1]")
-    public WebElement dangerWarning;
+    public static WebElement dangerWarning;
 
     public static void enterAllDetails(DataTable dataTable) {
 
