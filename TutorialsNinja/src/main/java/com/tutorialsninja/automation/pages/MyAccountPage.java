@@ -13,5 +13,5 @@ public class MyAccountPage {
     }
 
     @FindBy(id = "content")
-    public static WebElement myAccountBread;
+    public WebElement myAccountBread;
 }

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Map;
 
 public class LoginPage {
 
@@ -16,17 +15,20 @@ public class LoginPage {
     }
 
     @FindBy(id = "input-email")
-    public static WebElement emailField;
+    public WebElement emailField;
 
     @FindBy(id = "input-password")
-    public static WebElement passwordField;
+    public  WebElement passwordField;
 
     @FindBy(xpath = "//input[@value='Login']")
-    public static WebElement loginButton;
+    public  WebElement loginButton;
 
-    public static void detailsLogin( String string, String string2) {
+    @FindBy(xpath = "//i[@class='fa fa-exclamation-circle']")
+    public  WebElement loginWarning;
 
-        Elements.TypeText(LoginPage.emailField, string);
-        Elements.TypeText(LoginPage.passwordField, string2);
+    public void detailsLogin( String string, String string2) {
+
+        Elements.TypeText(emailField, string);
+        Elements.TypeText(passwordField, string2);
     }
 }

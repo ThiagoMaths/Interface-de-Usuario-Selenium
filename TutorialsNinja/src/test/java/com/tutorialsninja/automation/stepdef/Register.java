@@ -2,7 +2,7 @@ package com.tutorialsninja.automation.stepdef;
 
 import com.tutorialsninja.automation.base.Base;
 import com.tutorialsninja.automation.framework.Elements;
-import com.tutorialsninja.automation.pages.AccountSucessPage;
+import com.tutorialsninja.automation.pages.AccountSuccessPage;
 import com.tutorialsninja.automation.pages.HeadersSection;
 import com.tutorialsninja.automation.pages.RegisterPage;
 import io.cucumber.datatable.DataTable;
@@ -17,7 +17,7 @@ public class Register {
 
     HeadersSection headersSection = new HeadersSection();
     RegisterPage registerPage = new RegisterPage();
-    AccountSucessPage accountSucessPage = new AccountSucessPage();
+    AccountSuccessPage accountSuccessPage = new AccountSuccessPage();
 
    @Given("^I launch the application$")
     public void i_launch_the_application(){
@@ -53,7 +53,7 @@ public class Register {
    @Then("^I should see that the User account has successfully created$")
    public void i_should_see_that_the_User_account_has_created(){
 
-       Assert.assertTrue(Elements.isDisplayed(accountSucessPage.successBread));
+       Assert.assertTrue(Elements.isDisplayed(accountSuccessPage.successBread));
    }
 
    @Then("I should see that the User account is not created")

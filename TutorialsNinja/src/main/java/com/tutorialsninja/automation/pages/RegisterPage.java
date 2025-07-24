@@ -17,65 +17,65 @@ public class RegisterPage {
     }
 
     @FindBy(id = "input-firstname")
-    public static WebElement firstName;
+    public  WebElement firstName;
 
     @FindBy(id = "input-lastname")
-    public static WebElement lastName;
+    public  WebElement lastName;
 
     @FindBy(id = "input-email")
-    public static WebElement email;
+    public  WebElement email;
 
     @FindBy(id = "input-telephone")
-    public static WebElement telephone;
+    public  WebElement telephone;
 
     @FindBy(id = "input-password")
-    public static WebElement password;
+    public  WebElement password;
 
     @FindBy(id = "input-confirm")
-    public static WebElement confirmPassword;
+    public  WebElement confirmPassword;
 
     @FindBy(xpath = "//input[@name='agree']")
-    public static WebElement privacyPolity;
+    public  WebElement privacyPolity;
 
     @FindBy(xpath = "//input[@value='Continue']")
-    public static WebElement continueButton;
+    public  WebElement continueButton;
 
     @FindBy(linkText = "Register")
-    public static WebElement registerBreadCrumb;
+    public  WebElement registerBreadCrumb;
 
     @FindBy(css = "input[id='input-firstname']+div")
-    public static WebElement firsNameWarning;
+    public  WebElement firsNameWarning;
 
     @FindBy(css = "input[id='input-lastname']+div")
-    public static WebElement lastNameWarning;
+    public  WebElement lastNameWarning;
 
     @FindBy(css = "input[id='input-email']+div")
-    public static WebElement emailWarning;
+    public  WebElement emailWarning;
 
     @FindBy(css = "input[id='input-telephone']+div")
-    public static WebElement telephoneWarning;
+    public  WebElement telephoneWarning;
 
     @FindBy(css = "input[id='input-password']+div")
-    public static WebElement passwordWarning;
+    public  WebElement passwordWarning;
 
     @FindBy(css = "div[class$='alert-dismissible']")
-    public static WebElement mainWarning;
+    public  WebElement mainWarning;
 
     @FindBy(xpath = "(//input[@name='newsletter'])[1]")
-    public static WebElement subscribeButton;
+    public  WebElement subscribeButton;
 
     @FindBy(xpath = "(//div[@class='alert alert-danger alert-dismissible'])[1]")
-    public static WebElement dangerWarning;
+    public  WebElement dangerWarning;
 
-    public static void enterAllDetails(DataTable dataTable) {
+    public void enterAllDetails(DataTable dataTable) {
 
         Map<String, String> map = dataTable.asMap(String.class, String.class);
-        Elements.TypeText(RegisterPage.firstName, map.get("FirstName"));
-        Elements.TypeText(RegisterPage.lastName, map.get("LastName"));
-        Elements.TypeText(RegisterPage.email, map.get("Email"));
-        Elements.TypeText(RegisterPage.telephone, map.get("Telephone"));
-        Elements.TypeText(RegisterPage.password, map.get("Password"));
-        Elements.TypeText(RegisterPage.confirmPassword, map.get("Password"));
+        Elements.TypeText(firstName, map.get("FirstName"));
+        Elements.TypeText(lastName, map.get("LastName"));
+        Elements.TypeText(email, map.get("Email"));
+        Elements.TypeText(telephone, map.get("Telephone"));
+        Elements.TypeText(password, map.get("Password"));
+        Elements.TypeText(confirmPassword, map.get("Password"));
 
     }
 }

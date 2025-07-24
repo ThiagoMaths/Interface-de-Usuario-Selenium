@@ -34,4 +34,10 @@ public class Login {
 
         Assert.assertTrue(Elements.isDisplayed(myAccountPage.myAccountBread));
     }
+
+    @Then("I should see an error message that the credentials are invalid")
+    public void i_should_see_an_error_message_that_the_credentials_are_invalid() {
+        Assert.assertTrue(Elements.isDisplayed(loginPage.loginWarning));
+
+    }
 }

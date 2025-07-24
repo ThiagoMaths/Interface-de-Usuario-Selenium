@@ -12,12 +12,12 @@ public class HeadersSection {
     }
 
     @FindBy(xpath = "//span[text()=\"My Account\"]")
-    public static WebElement myAccountLink;
+    public  WebElement myAccountLink;
 
     @FindBy(linkText = "Register")
-    public static WebElement register;
+    public  WebElement register;
 
     @FindBy(linkText = "Login")
-    public static WebElement login;
+    public  WebElement login;
 
 }
