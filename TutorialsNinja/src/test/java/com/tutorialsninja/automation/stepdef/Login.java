@@ -5,7 +5,6 @@ import com.tutorialsninja.automation.pages.ForgottenPasswordPage;
 import com.tutorialsninja.automation.pages.HeadersSection;
 import com.tutorialsninja.automation.pages.LoginPage;
 import com.tutorialsninja.automation.pages.MyAccountPage;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
