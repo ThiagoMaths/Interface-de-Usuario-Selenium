@@ -13,5 +13,5 @@ public class AccountSuccessPage {
     }
 
     @FindBy(linkText = "Success")
-    public  WebElement successBread;
+    public WebElement successBread;
 }

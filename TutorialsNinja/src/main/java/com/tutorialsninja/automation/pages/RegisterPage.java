@@ -17,55 +17,55 @@ public class RegisterPage {
     }
 
     @FindBy(id = "input-firstname")
-    public  WebElement firstName;
+    public WebElement firstName;
 
     @FindBy(id = "input-lastname")
-    public  WebElement lastName;
+    public WebElement lastName;
 
     @FindBy(id = "input-email")
-    public  WebElement email;
+    public WebElement email;
 
     @FindBy(id = "input-telephone")
-    public  WebElement telephone;
+    public WebElement telephone;
 
     @FindBy(id = "input-password")
-    public  WebElement password;
+    public WebElement password;
 
     @FindBy(id = "input-confirm")
-    public  WebElement confirmPassword;
+    public WebElement confirmPassword;
 
     @FindBy(xpath = "//input[@name='agree']")
-    public  WebElement privacyPolity;
+    public WebElement privacyPolity;
 
     @FindBy(xpath = "//input[@value='Continue']")
-    public  WebElement continueButton;
+    public WebElement continueButton;
 
     @FindBy(linkText = "Register")
-    public  WebElement registerBreadCrumb;
+    public WebElement registerBreadCrumb;
 
     @FindBy(css = "input[id='input-firstname']+div")
-    public  WebElement firsNameWarning;
+    public WebElement firsNameWarning;
 
     @FindBy(css = "input[id='input-lastname']+div")
-    public  WebElement lastNameWarning;
+    public WebElement lastNameWarning;
 
     @FindBy(css = "input[id='input-email']+div")
-    public  WebElement emailWarning;
+    public WebElement emailWarning;
 
     @FindBy(css = "input[id='input-telephone']+div")
-    public  WebElement telephoneWarning;
+    public WebElement telephoneWarning;
 
     @FindBy(css = "input[id='input-password']+div")
-    public  WebElement passwordWarning;
+    public WebElement passwordWarning;
 
     @FindBy(css = "div[class$='alert-dismissible']")
-    public  WebElement mainWarning;
+    public WebElement mainWarning;
 
     @FindBy(xpath = "(//input[@name='newsletter'])[1]")
-    public  WebElement subscribeButton;
+    public WebElement subscribeButton;
 
     @FindBy(xpath = "(//div[@class='alert alert-danger alert-dismissible'])[1]")
-    public  WebElement dangerWarning;
+    public WebElement dangerWarning;
 
     public void enterAllDetails(DataTable dataTable) {
 

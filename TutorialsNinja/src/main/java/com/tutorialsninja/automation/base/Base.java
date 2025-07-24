@@ -49,7 +49,7 @@ public class Base {
         log.info("Scenario Completed: " + scenario.getName());
         log.info("Scenario Status is: " + scenario.getName());
 
-        try{
+        try {
 
             if (driver != null) {
                 driver.quit();

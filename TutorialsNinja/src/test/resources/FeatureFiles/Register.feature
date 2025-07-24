@@ -5,11 +5,11 @@ Feature: Registration functionality scenarios
     Given I launch the application
     And I navigate to Account Registration page
     When I provide all the below valid details
-      | FirstName | Ravi                   |
-      | LastName  | Kiran                  |
-      | Email     | test47.kiran@gmail.com |
-      | Telephone | 91221223344            |
-      | Password  | test1                  |
+      | FirstName | Ravi                    |
+      | LastName  | Kiran                   |
+      | Email     | test888.kiran@gmail.com |
+      | Telephone | 91221223344             |
+      | Password  | test1                   |
     And I select the Privacy Policy
     And I click on Continue Button
     Then I should see that the User account has successfully created
@@ -29,7 +29,7 @@ Feature: Registration functionality scenarios
     When I provide all the below valid details
       | FirstName | Ravi                   |
       | LastName  | Kiran                  |
-      | Email     | test23.kiran@gmail.com |
+      | Email     | testhg.kiran@gmail.com |
       | Telephone | 9121223344             |
       | Password  | test1                  |
     And I select the Privacy Policy
@@ -50,3 +50,4 @@ Feature: Registration functionality scenarios
     And I select the Privacy Policy
     And I click on Continue Button
     Then I should see that the User is restricted from creating duplicate account
+

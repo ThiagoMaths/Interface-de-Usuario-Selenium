@@ -18,15 +18,18 @@ public class LoginPage {
     public WebElement emailField;
 
     @FindBy(id = "input-password")
-    public  WebElement passwordField;
+    public WebElement passwordField;
 
     @FindBy(xpath = "//input[@value='Login']")
-    public  WebElement loginButton;
+    public WebElement loginButton;
 
-    @FindBy(xpath = "//i[@class='fa fa-exclamation-circle']")
-    public  WebElement loginWarning;
+    @FindBy(css = "div[class$='alert-dismissible']")
+    public WebElement mainWarning;
 
-    public void detailsLogin( String string, String string2) {
+    @FindBy(linkText = "Forgotten Password")
+    public WebElement forgottenLink;
+
+    public void detailsLogin(String string, String string2) {
 
         Elements.TypeText(emailField, string);
         Elements.TypeText(passwordField, string2);

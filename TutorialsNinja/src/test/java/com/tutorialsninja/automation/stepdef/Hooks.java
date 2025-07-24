@@ -42,7 +42,7 @@ public class Hooks {
         log.info("Scenario Completed: " + scenario.getName());
         log.info("Scenario Status is: " + scenario.getName());
 
-        try{
+        try {
 
             if (Base.driver != null) {
                 Base.driver.quit();
