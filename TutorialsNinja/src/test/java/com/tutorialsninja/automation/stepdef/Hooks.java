@@ -22,7 +22,7 @@ public class Hooks {
         Base.reader = new PropertyFileReader();
         Browser.startBrowser();
         Base.driver = Browser.startBrowser();
-        Browser.maximize();
+        Base.driver.manage().window().maximize();
 
     }
 
