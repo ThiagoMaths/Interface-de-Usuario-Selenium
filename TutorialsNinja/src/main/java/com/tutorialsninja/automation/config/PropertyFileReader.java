@@ -13,7 +13,7 @@ public class PropertyFileReader implements ConfigurationReader {
 
     private static final Logger log = LoggerFactory.getLogger(PropertyFileReader.class);
 
-    private static final String CONFIG_FILE = "/src/main/resources/ConfigurationFile/config.properties";
+    private static final String CONFIG_FILE = "ConfigurationFile/config.properties";
     private static final String URL_KEY = "url";
     private static final String BROWSER_KEY = "browser";
     private static final String PAGE_LOAD_TIMEOUT_KEY = "pageLoadTimeout";
@@ -26,12 +26,11 @@ public class PropertyFileReader implements ConfigurationReader {
 
     public PropertyFileReader() {
         properties = new Properties();
-
-        try(InputStream inputStream = new FileInputStream(CONFIG_FILE)) {
-            if(inputStream != null) {
+        try(InputStream input = getClass().getClassLoader().getResourceAsStream(CONFIG_FILE)) {
+            if(input == null) {
                 throw new IOException("Configuration file not found: " + CONFIG_FILE);
             }
-            properties.load(inputStream);
+            properties.load(input);
         } catch (IOException e) {
             log.error("Error loading configuration file : {}", CONFIG_FILE, e);
             throw new RuntimeException("Failed to load configuration file.", e);
