@@ -18,9 +18,10 @@ public class Hooks {
     @Before
     public void setUp(Scenario scenario) {
 
-        log.info("Scenario Started: " + scenario.getName());
+        log.info("Scenario Started: {}", scenario.getName());
         Base.reader = new PropertyFileReader();
         Browser.startBrowser();
+        Base.driver = Browser.startBrowser();
         Browser.maximize();
 
     }
@@ -35,21 +36,22 @@ public class Hooks {
                 scenario.attach(screenshot, "image/png", scenario.getName());
 
             } catch (final Exception e) {
-                log.error("Error while screenshot: " + e.getMessage(), e);
+                log.error("Error while screenshot: {}", e.getMessage(), e);
             }
         }
 
-        log.info("Scenario Completed: " + scenario.getName());
-        log.info("Scenario Status is: " + scenario.getName());
+        log.info("Scenario Completed: {}", scenario.getName());
+        log.info("Scenario Status is: {}", scenario.getName());
 
         try {
 
             if (Base.driver != null) {
                 Base.driver.quit();
+                Base.driver = null;
             }
 
         } catch (final Exception e) {
-            log.error("Error while quit: " + e.getMessage(), e);
+            log.error("Error while quit: {}", e.getMessage(), e);
         }
 
     }

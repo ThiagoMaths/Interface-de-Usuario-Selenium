@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = {"classpath:FeatureFiles/"},
         glue = {"classpath:com.tutorialsninja.automation.stepdef"},
         plugin = "html:target/cucumber-reports/cucumber.html",
-        tags = "@Orders")
+        tags = "@Register or @Login")
 
 public class Runner {
 
