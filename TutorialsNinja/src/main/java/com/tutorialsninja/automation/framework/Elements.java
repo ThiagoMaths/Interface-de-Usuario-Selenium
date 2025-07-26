@@ -153,46 +153,6 @@ public class Elements {
             element.click();
     }
 
-    public static void scrollToElemet(WebElement element) {
-        Waits.tryJavascript("window.scrollTo(arguments[0],arguments[1])", element.getLocation().x, element.getLocation().y);
-    }
 
-    public static void scrollToElemetAndClick(WebElement element) {
-        scrollToElemet(element);
-        element.click();
-    }
-
-    public static void scrollIntoView(WebElement element) {
-        Waits.tryJavascript("arguments[0].scrollIntoView()", element);
-    }
-
-    public static void scrollIntoViewAndClick(WebElement element) {
-        scrollIntoView(element);
-        element.click();
-    }
-
-    public static void scrollDownVertically() {
-        Waits.tryJavascript("window.scrollTo(0, document.body.scrollHeight)");
-    }
-
-    public static void scrollUpVertically() {
-        Waits.tryJavascript("window.scrollTo(0, -document.body.scrollHeight)");
-    }
-
-    public static void scrollDownByPixel() {
-        Waits.tryJavascript("window.scrollBy(0,1500)");
-    }
-
-    public static void scrollUpByPixel() {
-        Waits.tryJavascript("window.scrollBy(0,-1500)");
-    }
-
-    public static void ZoomInBypercentage() {
-        Waits.tryJavascript("document.body.style.zoom='40%'");
-    }
-
-    public static void ZoomBy100percentage() {
-        Waits.tryJavascript("document.body.style.zoom='100%'");
-    }
 
 }
