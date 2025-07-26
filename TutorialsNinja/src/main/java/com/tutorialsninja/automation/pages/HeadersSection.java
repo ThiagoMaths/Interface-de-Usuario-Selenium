@@ -20,10 +20,10 @@ public class HeadersSection {
     @FindBy(linkText = "Login")
     public WebElement login;
 
-    @FindBy(name = "search")
+    @FindBy(xpath = "//input[@name='search']")
     public WebElement searchField;
 
-    @FindBy(css = "button[class$= 'btn-lg']")
+    @FindBy(css = "button[class*='btn-lg']")
     public WebElement buttonSearch;
 
 

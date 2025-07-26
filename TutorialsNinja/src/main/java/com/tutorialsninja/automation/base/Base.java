@@ -25,7 +25,7 @@ public class Base {
     @Before
     public void setUp(Scenario scenario) {
 
-        log.info("Scenario Started: " + scenario.getName());
+        log.info("Scenario Started: {}", scenario.getName());
         reader = new PropertyFileReader();
         Browser.startBrowser();
         Browser.maximize();
@@ -42,12 +42,12 @@ public class Base {
                 scenario.attach(screenshot, "image/png", scenario.getName());
 
             } catch (final Exception e) {
-                log.error("Error while screenshot: " + e.getMessage(), e);
+                log.error("Error while screenshot: {}", e.getMessage(), e);
             }
         }
 
-        log.info("Scenario Completed: " + scenario.getName());
-        log.info("Scenario Status is: " + scenario.getName());
+        log.info("Scenario Completed: {}", scenario.getName());
+        log.info("Scenario Status is: {}", scenario.getName());
 
         try {
 
@@ -56,7 +56,7 @@ public class Base {
             }
 
         } catch (final Exception e) {
-            log.error("Error while quit: " + e.getMessage(), e);
+            log.error("Error while quit: {}", e.getMessage(), e);
         }
 
     }

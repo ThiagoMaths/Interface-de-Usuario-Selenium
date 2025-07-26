@@ -16,4 +16,9 @@ public class SearchResultPage {
     @FindBy(linkText = "Search")
     public WebElement searchResults;
 
+    @FindBy(css = "input[id='button-search']+h2+p")
+    public WebElement searchEmpty;
+
+    @FindBy(xpath = "//span[text()='Add to Cart'][1]")
+    public WebElement firstAddToCartOption;
 }

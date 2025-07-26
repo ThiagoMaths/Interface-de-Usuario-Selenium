@@ -18,26 +18,26 @@ public class Browser {
 
     public static WebDriver startBrowser() {
         String browser = Base.reader.getBrowser().toLowerCase();
-        log.info("Selected Browser is: " + browser);
+        log.info("Selected Browser is: {}", browser);
 
         switch (browser) {
 
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 Base.driver = new ChromeDriver();
-                log.info("Chrome Browser is Started" + Base.driver.hashCode());
+                log.info("Chrome Browser is Started{}", Base.driver.hashCode());
                 return Base.driver;
 
             case "ie":
                 WebDriverManager.iedriver().setup();
                 Base.driver = new InternetExplorerDriver();
-                log.info("Internet Explorer Browser is Started" + Base.driver.hashCode());
+                log.info("Internet Explorer Browser is Started{}", Base.driver.hashCode());
                 return Base.driver;
 
             default:
                 WebDriverManager.firefoxdriver().setup();
                 Base.driver = new FirefoxDriver();
-                log.info("Firefox Browser is Started" + Base.driver.hashCode());
+                log.info("Firefox Browser is Started{}", Base.driver.hashCode());
                 return Base.driver;
         }
 
@@ -51,7 +51,7 @@ public class Browser {
         try {
             return ((TakesScreenshot) Base.driver).getScreenshotAs(OutputType.BYTES);
         } catch (Exception e) {
-            log.info("Exception has Occured while taking screenshot");
+            log.info("Exception has Occurred while taking screenshot");
             return null;
         }
 
