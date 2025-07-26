@@ -1,4 +1,4 @@
-package com.tutorialsninja.automation.framework;
+package com.tutorialsninja.automation.utils;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
