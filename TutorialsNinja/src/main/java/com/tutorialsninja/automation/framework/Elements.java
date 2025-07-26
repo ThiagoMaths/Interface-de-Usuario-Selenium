@@ -153,55 +153,6 @@ public class Elements {
             element.click();
     }
 
-    public static Alert getAlert() {
-        return Base.driver.switchTo().alert();
-    }
-
-    public static void AcceptAlert() {
-        getAlert().accept();
-    }
-
-    public static void DismissAlert() {
-        getAlert().dismiss();
-    }
-
-    public static String getAlertText() {
-        String text = getAlert().getText();
-        return text;
-    }
-
-    public static boolean isAlertPresent() {
-        try {
-            Base.driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
-    public static void AcceptAlertIfPresent() {
-        if (!isAlertPresent())
-            return;
-        AcceptAlert();
-    }
-
-    public static void DismissAlertIfPresent() {
-
-        if (!isAlertPresent())
-            return;
-        DismissAlert();
-    }
-
-    public static void AcceptPrompt(String text) {
-
-        if (!isAlertPresent())
-            return;
-
-        Alert alert = getAlert();
-        alert.sendKeys(text);
-        alert.accept();
-    }
-
     public static void scrollToElemet(WebElement element) {
         Waits.tryJavascript("window.scrollTo(arguments[0],arguments[1])", element.getLocation().x, element.getLocation().y);
     }
