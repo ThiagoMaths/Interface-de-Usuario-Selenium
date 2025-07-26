@@ -1,48 +1,72 @@
 package com.tutorialsninja.automation.config;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
-import com.tutorialsninja.automation.util.PathHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PropertyFileReader implements ConfigurationReader {
 
-    Properties properties = null;
+
+    private static final Logger log = LoggerFactory.getLogger(PropertyFileReader.class);
+
+    private static final String CONFIG_FILE = "/src/main/resources/ConfigurationFile/config.properties";
+    private static final String URL_KEY = "url";
+    private static final String BROWSER_KEY = "browser";
+    private static final String PAGE_LOAD_TIMEOUT_KEY = "pageLoadTimeout";
+    private static final String USERNAME_KEY = "username";
+    private static final String PASSWORD_KEY = "password";
+    private static final String PRODUCT_KEY = "product";
+
+
+    private final Properties properties;
 
     public PropertyFileReader() {
         properties = new Properties();
-        try {
-            properties.load(PathHelper.getInputStreamResourcePath("/src/main/resources/ConfigurationFile/config.properties"));
+
+        try(InputStream inputStream = new FileInputStream(CONFIG_FILE)) {
+            if(inputStream != null) {
+                throw new IOException("Configuration file not found: " + CONFIG_FILE);
+            }
+            properties.load(inputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Error loading configuration file : {}", CONFIG_FILE, e);
+            throw new RuntimeException("Failed to load configuration file.", e);
         }
     }
 
+
+    @Override
     public String getUrl() {
-        return properties.getProperty("url");
+        return properties.getProperty(URL_KEY);
     }
 
+    @Override
     public String getBrowser() {
-        return properties.getProperty("browser");
+        return properties.getProperty(BROWSER_KEY);
     }
 
+    @Override
     public int getPageLoadTimeOut() {
-        return Integer.parseInt(properties.getProperty("PageLoadTimeOut"));
+        return Integer.parseInt(properties.getProperty(PAGE_LOAD_TIMEOUT_KEY));
     }
 
     @Override
     public String getUserName() {
-      return properties.getProperty("username");
+      return properties.getProperty(USERNAME_KEY);
     }
 
     @Override
     public String getPassword() {
-        return properties.getProperty("password");
+        return properties.getProperty(PASSWORD_KEY);
     }
 
     @Override
     public String getProduct() {
-        return properties.getProperty("product");
+        return properties.getProperty(PRODUCT_KEY);
     }
 
 
