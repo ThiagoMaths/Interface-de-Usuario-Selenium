@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Map;
 
-import static com.tutorialsninja.automation.base.Base.driver;
-
 public class ForgottenPasswordPage {
 
     public ForgottenPasswordPage() {
@@ -23,8 +21,4 @@ public class ForgottenPasswordPage {
     @FindBy(xpath = "//input[@value='Continue']")
     public WebElement continueButton;
 
-    public void forgotten(String emailAdress) {
-        Elements.TypeText(driver, email, emailAdress);
-        Elements.click(driver, continueButton);
-    }
 }
