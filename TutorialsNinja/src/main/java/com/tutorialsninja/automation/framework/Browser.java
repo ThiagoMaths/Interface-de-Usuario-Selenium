@@ -19,9 +19,9 @@ public class Browser {
     private static final String FIREFOX = "firefox";
     private static final String IE = "ie";
 
-    public static WebDriver startBrowser() {
+    public static WebDriver startBrowser(String browser) {
 
-        String browser = Base.reader.getBrowser().toLowerCase();
+         browser = Base.reader.getBrowser().toLowerCase();
         log.info("Selected Browser is: {}", browser);
 
         WebDriver driver;

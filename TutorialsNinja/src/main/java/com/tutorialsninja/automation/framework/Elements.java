@@ -143,7 +143,7 @@ public class Elements {
     }
 
     public static void click(WebDriver driver, WebElement element) {
-        Waits.waitUntil(driver, () -> isDisplayed(driver, element), 10);
+        Waits.waitUntil(driver, () -> isDisplayed(driver, element), 30);
         element.click();
     }
 
