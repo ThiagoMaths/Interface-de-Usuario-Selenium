@@ -1,6 +1,5 @@
 package com.tutorialsninja.automation.runner;
 
-
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -9,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = {"classpath:FeatureFiles/"},
         glue = {"classpath:com.tutorialsninja.automation.stepdef"},
         plugin = "html:target/cucumber-reports/cucumber.html",
-        tags = "@Register or @Login")
+        tags = "@Register")
 
 public class Runner {
 

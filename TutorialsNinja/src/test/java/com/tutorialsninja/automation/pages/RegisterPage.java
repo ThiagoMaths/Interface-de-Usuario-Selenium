@@ -1,22 +1,19 @@
 package com.tutorialsninja.automation.pages;
 
-import com.tutorialsninja.automation.base.Base;
 import com.tutorialsninja.automation.framework.Elements;
 import io.cucumber.datatable.DataTable;
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
-import static com.tutorialsninja.automation.base.Base.driver;
 
 public class RegisterPage {
 
-    public RegisterPage() {
-
-        PageFactory.initElements(driver, this);
-    }
+    WebDriver driver;
 
     @FindBy(id = "input-firstname")
     public WebElement firstName;
@@ -79,5 +76,52 @@ public class RegisterPage {
         Elements.TypeText(driver,password, map.get("Password"));
         Elements.TypeText(driver, confirmPassword, map.get("Password"));
 
+    }
+
+    public void privacyPolicySelect(){
+        Elements.click(driver, privacyPolity);
+    }
+
+    public void clickContinueButton(){
+        Elements.click(driver, continueButton);
+
+    }
+    public boolean registerNoCreated(){
+        boolean isDisplayed = Elements.isDisplayed(driver, registerBreadCrumb);
+        return isDisplayed;
+
+    }
+    public void WarningAlert(){
+        List<WebElement> warningElements = Arrays.asList(
+               firsNameWarning,
+               lastNameWarning,
+                emailWarning,
+               telephoneWarning,
+                passwordWarning,
+               mainWarning
+        );
+
+        List<String> warningMessages = Arrays.asList(
+                "First name error message not displayed",
+                "Last name error message not displayed",
+                "Email error message not displayed",
+                "Phone number error message not displayed",
+                "Password error message not displayed",
+                "General error message not displayed"
+        );
+
+        for (int i = 0; i < warningElements.size(); i++) {
+            Assert.assertTrue(warningMessages.get(i), Elements.isDisplayed(driver, warningElements.get(i)));
+        }
+    }
+
+    public void subscribe(){
+        Elements.selectRadioButton(subscribeButton);
+
+    }
+
+    public boolean duplicateAccount(){
+      boolean isDisplayed = Elements.isDisplayed(driver, dangerWarning);
+      return isDisplayed;
     }
 }
