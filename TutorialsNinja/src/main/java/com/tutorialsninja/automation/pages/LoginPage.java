@@ -7,11 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static com.tutorialsninja.automation.base.Base.driver;
+
 
 public class LoginPage {
 
     public LoginPage() {
-        PageFactory.initElements(Base.driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(id = "input-email")
@@ -31,7 +33,7 @@ public class LoginPage {
 
     public void detailsLogin(String string, String string2) {
 
-        Elements.TypeText(emailField, string);
-        Elements.TypeText(passwordField, string2);
+        Elements.TypeText(driver, emailField, string);
+        Elements.TypeText(driver, passwordField, string2);
     }
 }

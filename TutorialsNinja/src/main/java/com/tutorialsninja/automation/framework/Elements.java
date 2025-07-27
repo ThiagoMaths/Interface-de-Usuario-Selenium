@@ -3,8 +3,7 @@ package com.tutorialsninja.automation.framework;
 import java.util.List;
 import java.util.Random;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -16,7 +15,7 @@ public class Elements {
 
     public Logger log = LoggerFactory.getLogger(Elements.class);
 
-    public static void TypeText(WebElement element, String data) {
+    public static void TypeText(WebDriver driver, WebElement element, String data) {
         element.sendKeys(data);
     }
 
@@ -92,7 +91,7 @@ public class Elements {
         return false;
     }
 
-    public static boolean isDisplayed(WebElement element) {
+    public static boolean isDisplayed(WebDriver driver, WebElement element) {
         if (element.isDisplayed())
             return true;
         return false;
@@ -143,13 +142,13 @@ public class Elements {
         select.deselectByValue(value);
     }
 
-    public static void click(WebElement element) {
-        Waits.waitUntil(() -> isDisplayed(element));
+    public static void click(WebDriver driver, WebElement element) {
+        Waits.waitUntil(driver, () -> isDisplayed(driver, element), 10);
         element.click();
     }
 
-    public static void clickOnlyIfElementPresent(WebElement element) {
-        if (isDisplayed(element))
+    public static void clickOnlyIfElementPresent(WebDriver driver, WebElement element) {
+        if (isDisplayed(driver, element))
             element.click();
     }
 

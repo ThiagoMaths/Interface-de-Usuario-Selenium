@@ -9,11 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Map;
 
+import static com.tutorialsninja.automation.base.Base.driver;
+
 public class RegisterPage {
 
     public RegisterPage() {
 
-        PageFactory.initElements(Base.driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(id = "input-firstname")
@@ -70,12 +72,12 @@ public class RegisterPage {
     public void enterAllDetails(DataTable dataTable) {
 
         Map<String, String> map = dataTable.asMap(String.class, String.class);
-        Elements.TypeText(firstName, map.get("FirstName"));
-        Elements.TypeText(lastName, map.get("LastName"));
-        Elements.TypeText(email, map.get("Email"));
-        Elements.TypeText(telephone, map.get("Telephone"));
-        Elements.TypeText(password, map.get("Password"));
-        Elements.TypeText(confirmPassword, map.get("Password"));
+        Elements.TypeText(driver ,firstName, map.get("FirstName"));
+        Elements.TypeText(driver, lastName, map.get("LastName"));
+        Elements.TypeText(driver, email, map.get("Email"));
+        Elements.TypeText(driver, telephone, map.get("Telephone"));
+        Elements.TypeText(driver,password, map.get("Password"));
+        Elements.TypeText(driver, confirmPassword, map.get("Password"));
 
     }
 }

@@ -7,6 +7,8 @@ import com.tutorialsninja.automation.pages.LoginPage;
 import com.tutorialsninja.automation.pages.SearchResultPage;
 import io.cucumber.java.en.*;
 
+import static com.tutorialsninja.automation.base.Base.driver;
+
 public class Orders {
 
     Base base = new Base();
@@ -17,18 +19,18 @@ public class Orders {
     @Given("I login to the application")
     public void i_login_to_the_application() {
 
-        base.driver.get(Base.reader.getUrl());
-        Elements.click(headersSection.myAccountLink);
-        Elements.click(headersSection.login);
-        Elements.TypeText(loginPage.emailField, base.reader.getUserName());
-        Elements.TypeText(loginPage.passwordField, base.reader.getPassword());
-        Elements.click(loginPage.loginButton);
+        driver.get(Base.reader.getUrl());
+        Elements.click(driver, headersSection.myAccountLink);
+        Elements.click(driver, headersSection.login);
+        Elements.TypeText(driver, loginPage.emailField, base.reader.getUserName());
+        Elements.TypeText(driver, loginPage.passwordField, base.reader.getPassword());
+        Elements.click(driver, loginPage.loginButton);
     }
     @When("I add any product to Bag and checkout")
     public void i_add_any_product_to_bag_and_checkout() {
-        Elements.TypeText(headersSection.searchField, base.reader.getProduct());
-        Elements.click(headersSection.buttonSearch);
-        Elements.click(searchResultPage.firstAddToCartOption);
+        Elements.TypeText(driver, headersSection.searchField, base.reader.getProduct());
+        Elements.click(driver, headersSection.buttonSearch);
+        Elements.click(driver, searchResultPage.firstAddToCartOption);
     }
     @When("I place an order")
     public void i_place_an_order() {
