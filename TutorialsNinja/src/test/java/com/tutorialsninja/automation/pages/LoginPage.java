@@ -1,16 +1,15 @@
 package com.tutorialsninja.automation.pages;
 
-import com.tutorialsninja.automation.base.Base;
 import com.tutorialsninja.automation.framework.Elements;
-import io.cucumber.datatable.DataTable;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import static com.tutorialsninja.automation.base.Base.driver;
 
-
 public class LoginPage {
+
+    HeadersSection headersSection = new HeadersSection();
 
     public LoginPage() {
         PageFactory.initElements(driver, this);
@@ -31,9 +30,27 @@ public class LoginPage {
     @FindBy(linkText = "Forgotten Password")
     public WebElement forgottenLink;
 
+
     public void detailsLogin(String string, String string2) {
 
         Elements.TypeText(driver, emailField, string);
         Elements.TypeText(driver, passwordField, string2);
+    }
+
+    public void clickLoginButton() {
+        Elements.click(driver, loginButton);
+    }
+
+    public void isMainWarningDisplayed(){
+        Assert.assertTrue(Elements.isDisplayed(driver, mainWarning));
+    }
+
+    public void clickForgottenLink() {
+        Elements.click(driver, forgottenLink);
+    }
+
+    public void isPasswordResetEmailSent(){
+        Assert.assertTrue(Elements.VerifyTextEquals(mainWarning, "An email with a confirmation link has been sent your email address."));
+
     }
 }
