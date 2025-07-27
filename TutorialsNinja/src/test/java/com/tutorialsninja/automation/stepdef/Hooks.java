@@ -20,8 +20,8 @@ public class Hooks {
 
         log.info("Scenario Started: {}", scenario.getName());
         Base.reader = new PropertyFileReader();
-        Browser.startBrowser();
-        Base.driver = Browser.startBrowser();
+        String browser = Base.reader.getBrowser();
+        Base.driver = Browser.startBrowser(browser);
         Base.driver.manage().window().maximize();
 
     }
