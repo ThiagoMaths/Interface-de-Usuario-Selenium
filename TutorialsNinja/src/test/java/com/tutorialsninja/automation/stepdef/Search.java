@@ -21,6 +21,7 @@ public class Search {
         Elements.click(driver, headersSection.buttonSearch);
 
     }
+
     @Then("I should see the product in the search results")
     public void i_should_see_the_product_in_the_search_results() {
 
