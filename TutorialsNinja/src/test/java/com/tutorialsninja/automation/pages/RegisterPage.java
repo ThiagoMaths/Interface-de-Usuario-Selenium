@@ -1,19 +1,31 @@
 package com.tutorialsninja.automation.pages;
 
 import com.tutorialsninja.automation.framework.Elements;
-import io.cucumber.datatable.DataTable;
+import com.tutorialsninja.automation.utils.SQLiteHandler;
+import com.tutorialsninja.automation.utils.FakerUtil;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 
 public class RegisterPage {
 
     WebDriver driver;
+
+    private SQLiteHandler sqLiteHandler;
+    private FakerUtil util;
+
+    public RegisterPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        util = new FakerUtil();
+        sqLiteHandler = new SQLiteHandler();
+    }
+
 
     @FindBy(id = "input-firstname")
     public WebElement firstName;
@@ -66,39 +78,48 @@ public class RegisterPage {
     @FindBy(xpath = "(//div[@class='alert alert-danger alert-dismissible'])[1]")
     public WebElement dangerWarning;
 
-    public void enterAllDetails(DataTable dataTable) {
+    public void enterAllDetails() {
 
-        Map<String, String> map = dataTable.asMap(String.class, String.class);
-        Elements.TypeText(driver ,firstName, map.get("FirstName"));
-        Elements.TypeText(driver, lastName, map.get("LastName"));
-        Elements.TypeText(driver, email, map.get("Email"));
-        Elements.TypeText(driver, telephone, map.get("Telephone"));
-        Elements.TypeText(driver,password, map.get("Password"));
-        Elements.TypeText(driver, confirmPassword, map.get("Password"));
+        String firstNameValue = util.firstName();
+        String lastNameValue = util.lastName();
+        String emailValue = util.email();
+        String telephoneValue = util.telephone();
+        String passwordValue = util.password();
+
+        sqLiteHandler.insertUser(emailValue, passwordValue);
+
+        Elements.TypeText(driver, firstName, firstNameValue);
+        Elements.TypeText(driver, lastName, lastNameValue);
+        Elements.TypeText(driver, email, emailValue);
+        Elements.TypeText(driver, telephone, telephoneValue);
+        Elements.TypeText(driver, password, passwordValue);
+        Elements.TypeText(driver, confirmPassword, passwordValue);
 
     }
 
-    public void privacyPolicySelect(){
+    public void privacyPolicySelect() {
         Elements.click(driver, privacyPolity);
     }
 
-    public void clickContinueButton(){
+    public void clickContinueButton() {
         Elements.click(driver, continueButton);
 
     }
-    public boolean registerNoCreated(){
+
+    public boolean registerNoCreated() {
         boolean isDisplayed = Elements.isDisplayed(driver, registerBreadCrumb);
         return isDisplayed;
 
     }
-    public void WarningAlert(){
+
+    public void WarningAlert() {
         List<WebElement> warningElements = Arrays.asList(
-               firsNameWarning,
-               lastNameWarning,
+                firsNameWarning,
+                lastNameWarning,
                 emailWarning,
-               telephoneWarning,
+                telephoneWarning,
                 passwordWarning,
-               mainWarning
+                mainWarning
         );
 
         List<String> warningMessages = Arrays.asList(
@@ -115,13 +136,13 @@ public class RegisterPage {
         }
     }
 
-    public void subscribe(){
+    public void subscribe() {
         Elements.selectRadioButton(subscribeButton);
 
     }
 
-    public boolean duplicateAccount(){
-      boolean isDisplayed = Elements.isDisplayed(driver, dangerWarning);
-      return isDisplayed;
+    public boolean duplicateAccount() {
+        boolean isDisplayed = Elements.isDisplayed(driver, dangerWarning);
+        return isDisplayed;
     }
 }

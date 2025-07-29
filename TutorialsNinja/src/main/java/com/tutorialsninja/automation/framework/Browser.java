@@ -21,7 +21,7 @@ public class Browser {
 
     public static WebDriver startBrowser(String browser) {
 
-         browser = Base.reader.getBrowser().toLowerCase();
+        browser = Base.reader.getBrowser().toLowerCase();
         log.info("Selected Browser is: {}", browser);
 
         WebDriver driver;

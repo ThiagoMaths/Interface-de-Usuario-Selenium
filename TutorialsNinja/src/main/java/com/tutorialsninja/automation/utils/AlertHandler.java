@@ -38,21 +38,21 @@ public class AlertHandler {
     }
 
     public void AcceptAlertIfPresent() {
-        if (!isAlertPresent()){
+        if (!isAlertPresent()) {
             AcceptAlert();
         }
     }
 
     public void DismissAlertIfPresent() {
 
-        if (!isAlertPresent()){
+        if (!isAlertPresent()) {
             DismissAlert();
         }
     }
 
     public void AcceptPrompt(String text) {
 
-        if (!isAlertPresent()){
+        if (!isAlertPresent()) {
             Alert alert = getAlert();
             alert.sendKeys(text);
             alert.accept();

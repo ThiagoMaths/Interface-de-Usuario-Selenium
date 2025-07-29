@@ -22,8 +22,8 @@ public class Login {
     @Given("I navigate to Account Login page")
     public void i_navigate_to_account_login_page() {
 
-        Elements.click(driver,headersSection.myAccountLink);
-        Elements.click(driver,headersSection.login);
+        Elements.click(driver, headersSection.myAccountLink);
+        Elements.click(driver, headersSection.login);
     }
 
     @When("I enter Username {string} and Password {string}")
@@ -50,9 +50,9 @@ public class Login {
 
     @When("I reset  the forgotten password for email {string}")
     public void iResetTheForgottenPasswordForEmail(String arg0) {
-        Elements.click(driver,loginPage.forgottenLink);
-        Elements.TypeText(driver,forgottenPasswordPage.email, arg0);
-        Elements.click(driver,forgottenPasswordPage.continueButton);
+        Elements.click(driver, loginPage.forgottenLink);
+        Elements.TypeText(driver, forgottenPasswordPage.email, arg0);
+        Elements.click(driver, forgottenPasswordPage.continueButton);
     }
 
     @Then("I should see a message informing the User that information related to resting password have been sent to email address")

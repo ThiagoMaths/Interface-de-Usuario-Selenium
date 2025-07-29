@@ -26,8 +26,8 @@ public class PropertyFileReader implements ConfigurationReader {
 
     public PropertyFileReader() {
         properties = new Properties();
-        try(InputStream input = getClass().getClassLoader().getResourceAsStream(CONFIG_FILE)) {
-            if(input == null) {
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream(CONFIG_FILE)) {
+            if (input == null) {
                 throw new IOException("Configuration file not found: " + CONFIG_FILE);
             }
             properties.load(input);
@@ -55,7 +55,7 @@ public class PropertyFileReader implements ConfigurationReader {
 
     @Override
     public String getUserName() {
-      return properties.getProperty(USERNAME_KEY);
+        return properties.getProperty(USERNAME_KEY);
     }
 
     @Override

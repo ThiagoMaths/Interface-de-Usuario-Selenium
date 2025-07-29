@@ -26,16 +26,19 @@ public class Orders {
         Elements.TypeText(driver, loginPage.passwordField, base.reader.getPassword());
         Elements.click(driver, loginPage.loginButton);
     }
+
     @When("I add any product to Bag and checkout")
     public void i_add_any_product_to_bag_and_checkout() {
         Elements.TypeText(driver, headersSection.searchField, base.reader.getProduct());
         Elements.click(driver, headersSection.buttonSearch);
         Elements.click(driver, searchResultPage.firstAddToCartOption);
     }
+
     @When("I place an order")
     public void i_place_an_order() {
 
     }
+
     @Then("I should see that the order is placed successfully")
     public void i_should_see_that_the_order_is_placed_successfully() {
 

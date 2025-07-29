@@ -4,6 +4,7 @@ import com.tutorialsninja.automation.base.Base;
 import com.tutorialsninja.automation.config.PropertyFileReader;
 import com.tutorialsninja.automation.framework.Browser;
 
+import com.tutorialsninja.automation.utils.SQLiteHandler;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -24,6 +25,7 @@ public class Hooks {
         Base.driver = Browser.startBrowser(browser);
         Base.driver.manage().window().maximize();
 
+        SQLiteHandler.getConnection();
     }
 
     @After

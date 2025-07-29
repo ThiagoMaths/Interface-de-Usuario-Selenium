@@ -29,7 +29,7 @@ public class HeadersSection {
     @FindBy(css = "button[class*='btn-lg']")
     public WebElement buttonSearch;
 
-    public void myAccountToRegister(){
+    public void myAccountToRegister() {
         Elements.click(driver, myAccountLink);
         Elements.click(driver, register);
     }

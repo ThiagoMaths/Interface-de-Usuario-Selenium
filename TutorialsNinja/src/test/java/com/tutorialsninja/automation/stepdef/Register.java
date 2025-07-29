@@ -4,7 +4,6 @@ import com.tutorialsninja.automation.base.Base;
 import com.tutorialsninja.automation.pages.AccountSuccessPage;
 import com.tutorialsninja.automation.pages.HeadersSection;
 import com.tutorialsninja.automation.pages.RegisterPage;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 
 
@@ -14,8 +13,9 @@ import static com.tutorialsninja.automation.base.Base.driver;
 public class Register {
 
     HeadersSection headersSection = new HeadersSection();
-    RegisterPage registerPage = new RegisterPage();
-    AccountSuccessPage accountSuccessPage = new AccountSuccessPage();
+    RegisterPage registerPage = new RegisterPage(driver);
+    AccountSuccessPage accountSuccessPage = new AccountSuccessPage(driver);
+
 
     @Given("^I launch the application$")
     public void i_launch_the_application() {
@@ -24,12 +24,12 @@ public class Register {
 
     @And("^I navigate to Account Registration page$")
     public void i_navigate_to_Account_Registration_page() {
-       headersSection.myAccountToRegister();
+        headersSection.myAccountToRegister();
     }
 
     @When("^I provide all the below valid details$")
-    public void i_provide_all_the_below_valid_details(DataTable dataTable) {
-        registerPage.enterAllDetails(dataTable);
+    public void i_provide_all_the_below_valid_details() {
+        registerPage.enterAllDetails();
 
     }
 
