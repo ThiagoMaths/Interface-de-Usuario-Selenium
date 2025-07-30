@@ -46,9 +46,7 @@ public class SQLiteHandler {
             preparedStatement.executeUpdate();
             counter++;
 
-            if (counter >= 10) {
-                closeConnection();
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Insert failed");
@@ -72,6 +70,19 @@ public class SQLiteHandler {
         return null;
     }
 
+   public String getRandomEmail() {
+        String sql = "SELECT EMAIL FROM users ORDER BY RANDOM() LIMIT 1";
+          try(Statement statement = connection.createStatement();
+          ResultSet resultSet = statement.executeQuery(sql)) {
+              if(resultSet.next()) {
+                  return resultSet.getString("email");
+              }
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+        return null;
+   }
+
     public void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -82,7 +93,4 @@ public class SQLiteHandler {
         }
     }
 
-    public Connection getConnection2() {
-        return this.connection;
-    }
 }

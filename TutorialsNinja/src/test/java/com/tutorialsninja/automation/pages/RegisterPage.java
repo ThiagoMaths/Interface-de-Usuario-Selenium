@@ -97,6 +97,23 @@ public class RegisterPage {
 
     }
 
+    public void enterAllDetailsEmailDuplicate() {
+
+        String firstNameValue = util.firstName();
+        String lastNameValue = util.lastName();
+        String emailValue = sqLiteHandler.getRandomEmail();
+        String telephoneValue = util.telephone();
+        String passwordValue = util.password();
+
+        Elements.TypeText(driver, firstName, firstNameValue);
+        Elements.TypeText(driver, lastName, lastNameValue);
+        Elements.TypeText(driver, email, emailValue);
+        Elements.TypeText(driver, telephone, telephoneValue);
+        Elements.TypeText(driver, password, passwordValue);
+        Elements.TypeText(driver, confirmPassword, passwordValue);
+
+    }
+
     public void privacyPolicySelect() {
         Elements.click(driver, privacyPolity);
     }
@@ -142,7 +159,6 @@ public class RegisterPage {
     }
 
     public boolean duplicateAccount() {
-        boolean isDisplayed = Elements.isDisplayed(driver, dangerWarning);
-        return isDisplayed;
+        return Elements.isDisplayed(driver, registerBreadCrumb);
     }
 }
