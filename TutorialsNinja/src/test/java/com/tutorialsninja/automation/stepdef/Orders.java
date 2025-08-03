@@ -12,8 +12,8 @@ import static com.tutorialsninja.automation.base.Base.driver;
 public class Orders {
 
     Base base = new Base();
-    HeadersSection headersSection = new HeadersSection();
-    LoginPage loginPage = new LoginPage();
+    HeadersSection headersSection = new HeadersSection(driver );
+    LoginPage loginPage = new LoginPage(driver);
     SearchResultPage searchResultPage = new SearchResultPage();
 
     @Given("I login to the application")

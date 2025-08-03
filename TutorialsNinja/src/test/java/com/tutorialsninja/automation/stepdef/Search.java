@@ -11,7 +11,7 @@ import static com.tutorialsninja.automation.base.Base.driver;
 
 public class Search {
 
-    HeadersSection headersSection = new HeadersSection();
+    HeadersSection headersSection = new HeadersSection(driver);
     SearchResultPage searchResultPage = new SearchResultPage();
 
     @When("I search for a product {string}")

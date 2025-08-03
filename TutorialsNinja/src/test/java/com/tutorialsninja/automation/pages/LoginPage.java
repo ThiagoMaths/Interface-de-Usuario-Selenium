@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Map;
 
-import static com.tutorialsninja.automation.base.Base.driver;
 
 
 public class LoginPage {
@@ -19,11 +18,7 @@ public class LoginPage {
     private SQLiteHandler sqLiteHandler;
     private WebDriver driver;
     private FakerUtil fakerUtil;
-    public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        sqLiteHandler = new SQLiteHandler();
-        fakerUtil = new FakerUtil();
-    }
+
 
     @FindBy(id = "input-email")
     public WebElement emailField;
@@ -39,6 +34,12 @@ public class LoginPage {
 
     @FindBy(linkText = "Forgotten Password")
     public WebElement forgottenLink;
+
+    public LoginPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        sqLiteHandler = new SQLiteHandler();
+        fakerUtil = new FakerUtil();
+    }
 
     public void detailEmail() {
 
