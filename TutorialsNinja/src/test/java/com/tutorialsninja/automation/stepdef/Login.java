@@ -66,13 +66,13 @@ public class Login {
 
     @When("I reset the forgotten password for email with an invalid email")
     public void i_reset_the_forgotten_password_for_email_with_an_invalid_email() {
-      loginPage.forgottenLink();
-      forgottenPasswordPage.sendEmailInvalid();
+        loginPage.forgottenLink();
+        forgottenPasswordPage.sendEmailInvalid();
     }
 
     @Then("I should see an error message indicating the email is invalid")
     public void i_should_see_an_error_message_indicating_the_email_is_invalid() {
-       forgottenPasswordPage.forgottenAlert();
+        forgottenPasswordPage.forgottenAlert();
     }
 
 

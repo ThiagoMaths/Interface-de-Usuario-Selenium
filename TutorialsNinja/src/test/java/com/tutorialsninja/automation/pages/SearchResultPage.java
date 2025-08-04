@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class SearchResultPage {
 
     private WebDriver driver;
+
     public SearchResultPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -23,11 +24,11 @@ public class SearchResultPage {
     @FindBy(xpath = "//span[text()='Add to Cart'][1]")
     public WebElement firstAddToCartOption;
 
-    public boolean isSearchResult(){
+    public boolean isSearchResult() {
         return Elements.isDisplayed(driver, searchResults);
     }
 
-    public boolean isSearchEmpty(){
+    public boolean isSearchEmpty() {
         return Elements.isDisplayed(driver, searchEmpty);
     }
 

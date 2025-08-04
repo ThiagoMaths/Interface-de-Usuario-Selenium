@@ -23,7 +23,7 @@ public class CSVReader {
                 lines.add(Collections.singletonList(columns[0].trim()));
             }
 
-            if(!lines.isEmpty()){
+            if (!lines.isEmpty()) {
                 Random random = new Random();
                 int randomIndex = random.nextInt(lines.size());
                 randomString = lines.get(randomIndex).get(0);
@@ -32,8 +32,9 @@ public class CSVReader {
         } catch (CsvValidationException e) {
             throw new RuntimeException(e);
         }
-     return randomString;
- }
+        return randomString;
+    }
+
     public static String readCSVFile() throws IOException {
         return readRandom(CSV_PATH);
     }
@@ -46,8 +47,6 @@ public class CSVReader {
         System.out.println(readCSVFile());
         System.out.println(readInvalidCSVFile());
     }
-
-
 
 
 }

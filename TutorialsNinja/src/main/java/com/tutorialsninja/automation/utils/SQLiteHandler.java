@@ -55,40 +55,40 @@ public class SQLiteHandler {
         }
     }
 
-   public String getRandomEmail() {
+    public String getRandomEmail() {
         String sql = "SELECT EMAIL FROM users ORDER BY RANDOM() LIMIT 1";
-          try(Statement statement = connection.createStatement();
-          ResultSet resultSet = statement.executeQuery(sql)) {
-              if(resultSet.next()) {
-                  return resultSet.getString("email");
-              }
-          } catch (SQLException e) {
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            if (resultSet.next()) {
+                return resultSet.getString("email");
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
-          }
+        }
         return null;
-   }
+    }
 
-   public Map<String, String> getRandomEmailAndPassword() {
+    public Map<String, String> getRandomEmailAndPassword() {
         Map<String, String> credentials = new HashMap<String, String>();
         String email = null;
         String password = null;
 
-        try(PreparedStatement preparedStatement = connection.prepareStatement
+        try (PreparedStatement preparedStatement = connection.prepareStatement
                 ("SELECT email, password FROM users ORDER BY RANDOM() LIMIT 1")) {
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 email = resultSet.getString("email");
                 password = resultSet.getString("password");
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         credentials.put("email", email);
-       credentials.put("password", password);
+        credentials.put("password", password);
 
-       return credentials;
-   }
+        return credentials;
+    }
 
     public void closeConnection() {
         try {

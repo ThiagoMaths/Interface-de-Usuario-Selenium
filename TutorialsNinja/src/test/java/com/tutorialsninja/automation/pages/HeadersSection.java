@@ -33,7 +33,7 @@ public class HeadersSection {
         PageFactory.initElements(driver, this);
     }
 
-    public void myAccountLinkClick(){
+    public void myAccountLinkClick() {
         Elements.click(driver, myAccountLink);
     }
 
@@ -51,14 +51,14 @@ public class HeadersSection {
         String product = CSVReader.readCSVFile();
 
         Elements.TypeText(driver, searchField, product);
-        Elements.click(driver, buttonSearch) ;
+        Elements.click(driver, buttonSearch);
     }
 
     public void searchProductsInvalid() throws IOException {
         String productInvalid = CSVReader.readInvalidCSVFile();
 
         Elements.TypeText(driver, searchField, productInvalid);
-        Elements.click(driver, buttonSearch) ;
+        Elements.click(driver, buttonSearch);
     }
 
 }

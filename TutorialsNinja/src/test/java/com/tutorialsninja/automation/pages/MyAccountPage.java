@@ -12,17 +12,17 @@ import static com.tutorialsninja.automation.base.Base.driver;
 
 public class MyAccountPage {
 
-   private WebDriver driver;
+    private WebDriver driver;
 
-   public MyAccountPage(WebDriver driver) {
-       PageFactory.initElements(driver, this);
-   }
+    public MyAccountPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(id = "content")
     public WebElement myAccountBread;
 
-   public void SuccessfullyLogin() {
-       Assert.assertTrue(Elements.isDisplayed(driver, myAccountBread));
+    public void SuccessfullyLogin() {
+        Assert.assertTrue(Elements.isDisplayed(driver, myAccountBread));
     }
 
 }

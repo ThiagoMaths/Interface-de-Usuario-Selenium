@@ -35,19 +35,19 @@ public class ForgottenPasswordPage {
     @FindBy(css = "div[class$='alert-dismissible']")
     public WebElement mainWarning;
 
-    public void sendEmail(){
+    public void sendEmail() {
 
-       String emailFind =  sqLiteHandler.getRandomEmail();
+        String emailFind = sqLiteHandler.getRandomEmail();
 
         Elements.TypeText(driver, email, emailFind);
         button();
     }
 
-    public void button(){
+    public void button() {
         Elements.click(driver, continueButton);
     }
 
-    public void sendEmailInvalid(){
+    public void sendEmailInvalid() {
 
         String emailInvalid = fakerUtil.email();
         Elements.TypeText(driver, email, emailInvalid);
@@ -55,7 +55,7 @@ public class ForgottenPasswordPage {
 
     }
 
-    public void forgottenAlert()  {
+    public void forgottenAlert() {
         Assert.assertTrue(Elements.isDisplayed(driver, mainWarning));
 
     }

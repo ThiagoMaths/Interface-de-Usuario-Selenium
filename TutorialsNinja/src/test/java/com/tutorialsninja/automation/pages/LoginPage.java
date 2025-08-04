@@ -12,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.Map;
 
 
-
 public class LoginPage {
 
     private SQLiteHandler sqLiteHandler;
@@ -53,7 +52,7 @@ public class LoginPage {
     }
 
     public void loginButton() {
-        Elements.click(driver,loginButton);
+        Elements.click(driver, loginButton);
 
     }
 
@@ -82,7 +81,7 @@ public class LoginPage {
     }
 
     public void forgottenLink() {
-        Elements.click(driver,forgottenLink);
+        Elements.click(driver, forgottenLink);
     }
 
 }

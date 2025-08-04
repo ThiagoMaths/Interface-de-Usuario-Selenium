@@ -19,7 +19,7 @@ Feature: Registration functionality scenarios
 
   @Register @Three
   Scenario: Verify whether the user is able to register into application by opting for Newsletter subscription
-    Given I launch the application  
+    Given I launch the application
     And  I navigate to Account Registration page
     When I provide all the below valid details
     And I subscribe to Newsletter
