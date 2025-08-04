@@ -8,8 +8,12 @@ O objetivo principal deste projeto é fornecer um exemplo prático de como autom
 
 ## Tecnologias e Bibliotecas Principais
 
+*   **Java:** Linguagem de programação utilizada para desenvolver os testes automatizados.
 *   **Selenium WebDriver:** Ferramenta para automatizar a interação com navegadores web. Permite controlar o navegador e simular ações do usuário.
 *   **JUnit:** Framework de teste para Java, utilizado para criar e executar os testes. Fornece as anotações e métodos para definir e executar casos de teste.
+*   **SQLite:** Banco de dados leve utilizado para armazenar dados de teste localmente. Permite criar conjuntos de dados controlados para os testes.
+*   **CSV (Comma-Separated Values):** Formato de arquivo utilizado para armazenar dados de teste em formato tabular. Facilita a criação e manutenção de conjuntos de dados para os testes.
+*   **HubSelector (Se aplicável):** Se você utilizou alguma biblioteca específica para selecionar o Selenium Hub (para execução em grid), mencione aqui.  Ex: "Biblioteca X para seleção dinâmica de hubs Selenium, permitindo a execução dos testes em diferentes ambientes."  (Se não usou uma biblioteca específica, remova esta linha)
 
 ## Demonstração do Código
 
