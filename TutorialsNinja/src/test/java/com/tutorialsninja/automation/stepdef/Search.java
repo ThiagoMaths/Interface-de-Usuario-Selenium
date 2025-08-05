@@ -7,33 +7,34 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.io.IOException;
+
 import static com.tutorialsninja.automation.base.Base.driver;
 
 public class Search {
 
-    HeadersSection headersSection = new HeadersSection();
-    SearchResultPage searchResultPage = new SearchResultPage();
+    HeadersSection headersSection = new HeadersSection(driver);
+    SearchResultPage searchResultPage = new SearchResultPage(driver);
 
-    @When("I search for a product {string}")
-    public void i_search_for_a_product(String product) {
-
-        Elements.TypeText(driver, headersSection.searchField, product);
-        Elements.click(driver, headersSection.buttonSearch);
-
+    @When("I search for a product")
+    public void i_search_for_a_product() throws IOException {
+        headersSection.searchProducts();
     }
 
     @Then("I should see the product in the search results")
     public void i_should_see_the_product_in_the_search_results() {
-
-        Assert.assertTrue(Elements.isDisplayed(driver, searchResultPage.searchResults));
-
+        searchResultPage.isSearchResult();
     }
 
-    @Then("I should see the page displaying the message {string}")
-    public void i_should_see_the_page_displaying_the_message(String product) {
-
-        Assert.assertTrue(Elements.VerifyTextEquals(searchResultPage.searchEmpty, product));
-
-
+    @When("I search for a product missing")
+    public void iSearchForAProductMissing() throws IOException {
+        headersSection.searchProductsInvalid();
     }
+
+    @Then("I should see the page displaying the message")
+    public void i_should_see_the_page_displaying_the_message() {
+        searchResultPage.isSearchEmpty();
+    }
+
+
 }

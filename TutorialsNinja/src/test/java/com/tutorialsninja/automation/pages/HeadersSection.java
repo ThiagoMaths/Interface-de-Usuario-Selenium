@@ -1,18 +1,18 @@
 package com.tutorialsninja.automation.pages;
 
-import com.tutorialsninja.automation.base.Base;
 import com.tutorialsninja.automation.framework.Elements;
+import com.tutorialsninja.automation.utils.CSVReader;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static com.tutorialsninja.automation.base.Base.driver;
+import java.io.IOException;
+
 
 public class HeadersSection {
 
-    public HeadersSection() {
-        PageFactory.initElements(Base.driver, this);
-    }
+    WebDriver driver;
 
     @FindBy(xpath = "//span[text()=\"My Account\"]")
     public WebElement myAccountLink;
@@ -29,9 +29,36 @@ public class HeadersSection {
     @FindBy(css = "button[class*='btn-lg']")
     public WebElement buttonSearch;
 
-    public void myAccountToRegister() {
+    public HeadersSection(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
+
+    public void myAccountLinkClick() {
         Elements.click(driver, myAccountLink);
+    }
+
+    public void myAccountToRegister() {
+        myAccountLinkClick();
         Elements.click(driver, register);
+    }
+
+    public void MyAccountToLogin() {
+        myAccountLinkClick();
+        Elements.click(driver, login);
+    }
+
+    public void searchProducts() throws IOException {
+        String product = CSVReader.readCSVFile();
+
+        Elements.TypeText(driver, searchField, product);
+        Elements.click(driver, buttonSearch);
+    }
+
+    public void searchProductsInvalid() throws IOException {
+        String productInvalid = CSVReader.readInvalidCSVFile();
+
+        Elements.TypeText(driver, searchField, productInvalid);
+        Elements.click(driver, buttonSearch);
     }
 
 }

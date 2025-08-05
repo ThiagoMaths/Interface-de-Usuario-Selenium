@@ -1,6 +1,8 @@
 package com.tutorialsninja.automation.utils;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SQLiteHandler {
 
@@ -46,30 +48,46 @@ public class SQLiteHandler {
             preparedStatement.executeUpdate();
             counter++;
 
-            if (counter >= 10) {
-                closeConnection();
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Insert failed");
         }
     }
 
-    public String getUserByEmail(String email) {
-        String sql = "SELECT * FROM users WHERE email = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, email);
-
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    return resultSet.getString("password");
-                }
+    public String getRandomEmail() {
+        String sql = "SELECT EMAIL FROM users ORDER BY RANDOM() LIMIT 1";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            if (resultSet.next()) {
+                return resultSet.getString("email");
             }
         } catch (SQLException e) {
-            System.out.println("Error find email" + e.getMessage());
             e.printStackTrace();
         }
         return null;
+    }
+
+    public Map<String, String> getRandomEmailAndPassword() {
+        Map<String, String> credentials = new HashMap<String, String>();
+        String email = null;
+        String password = null;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement
+                ("SELECT email, password FROM users ORDER BY RANDOM() LIMIT 1")) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                email = resultSet.getString("email");
+                password = resultSet.getString("password");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        credentials.put("email", email);
+        credentials.put("password", password);
+
+        return credentials;
     }
 
     public void closeConnection() {
@@ -82,7 +100,4 @@ public class SQLiteHandler {
         }
     }
 
-    public Connection getConnection2() {
-        return this.connection;
-    }
 }

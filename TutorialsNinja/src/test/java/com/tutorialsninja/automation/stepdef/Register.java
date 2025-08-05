@@ -6,13 +6,12 @@ import com.tutorialsninja.automation.pages.HeadersSection;
 import com.tutorialsninja.automation.pages.RegisterPage;
 import io.cucumber.java.en.*;
 
-
 import static com.tutorialsninja.automation.base.Base.driver;
 
 
 public class Register {
 
-    HeadersSection headersSection = new HeadersSection();
+    HeadersSection headersSection = new HeadersSection(driver);
     RegisterPage registerPage = new RegisterPage(driver);
     AccountSuccessPage accountSuccessPage = new AccountSuccessPage(driver);
 
@@ -30,18 +29,20 @@ public class Register {
     @When("^I provide all the below valid details$")
     public void i_provide_all_the_below_valid_details() {
         registerPage.enterAllDetails();
+    }
 
+    @When("I provide all the below valid details with an existing email")
+    public void iProvideAllTheBelowValidDetailsWithAnExistingEmail() {
+        registerPage.enterAllDetailsEmailDuplicate();
     }
 
     @And("^I select the Privacy Policy$")
     public void i_select_the_Privacy_Policy() {
-
         registerPage.privacyPolicySelect();
     }
 
     @And("^I click on Continue Button$")
     public void i_click_on_Continue_Button() {
-
         registerPage.clickContinueButton();
     }
 
@@ -57,9 +58,7 @@ public class Register {
 
     @And("I should see the error message informing the user to fill the mandatory fields")
     public void i_should_see_the_error_message_informing_the_user_to_fill_the_mandatory_fields() {
-
         registerPage.WarningAlert();
-
     }
 
     @When("I subscribe to Newsletter")
@@ -71,6 +70,7 @@ public class Register {
     public void i_should_see_that_the_user_is_restricted_from_creating_duplicate_account() {
         registerPage.duplicateAccount();
     }
+
 
 }
 
