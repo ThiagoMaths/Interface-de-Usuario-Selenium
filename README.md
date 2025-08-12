@@ -19,7 +19,7 @@ O objetivo principal deste projeto é fornecer um exemplo prático de como autom
 
 O código implementa o padrão Page Object (PO) para organizar os elementos da página e as ações que podem ser realizadas. A estrutura básica é:
 
-*   **Classes Page Object:** Cada página do site (ex: `HomePage`, `LoginPage`) é representada por uma classe que contém:
+*   **Classes Page Object:** Cada página do site (ex: `RegisterPage`, `LoginPage`) é representada por uma classe que contém:
     *   Os seletores dos elementos da página (ex: botões, campos de texto).
     *   Os métodos que interagem com esses elementos (ex: `clickLoginButton()`, `enterUsername()`).
 
