@@ -1,6 +1,5 @@
 package com.tutorialsninja.automation.stepdef;
 
-import com.tutorialsninja.automation.framework.Elements;
 import com.tutorialsninja.automation.pages.ForgottenPasswordPage;
 import com.tutorialsninja.automation.pages.HeadersSection;
 import com.tutorialsninja.automation.pages.LoginPage;
