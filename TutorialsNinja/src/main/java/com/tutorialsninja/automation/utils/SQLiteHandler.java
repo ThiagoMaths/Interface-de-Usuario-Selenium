@@ -1,10 +1,15 @@
 package com.tutorialsninja.automation.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SQLiteHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(SQLiteHandler.class);
 
     private static final String DB_URL = "jdbc:sqlite:test.db";
     private static Connection connection;
@@ -32,10 +37,10 @@ public class SQLiteHandler {
         try (Statement statement = connection.createStatement()) {
 
             statement.execute(sql);
-            System.out.println("Table created");
+            log.info("Table created");
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Table creation failed");
+            log.info("Table creation failed");
         }
     }
 
@@ -51,7 +56,7 @@ public class SQLiteHandler {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Insert failed");
+            log.info("Insert failed");
         }
     }
 
