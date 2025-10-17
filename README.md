@@ -1,37 +1,70 @@
-# Automação de Testes de Interface de Usuário com Selenium
+Framework Avançado de Automação de Testes para UI Web
+Visão Geral
+Este repositório contém um framework de automação de testes robusto, escalável e de fácil manutenção, construído com Java, Selenium e Cucumber. O projeto foi arquitetado para ir além de um simples script de teste, aplicando princípios de engenharia de software e padrões de design para criar uma solução de nível profissional, pronta para ambientes de Integração Contínua (CI/CD).
 
-Este projeto demonstra a criação de testes automatizados de interface de usuário (UI) utilizando Selenium WebDriver com JUnit para interagir com um site de e-commerce.
+O alvo da automação é um site de e-commerce, demonstrando a aplicação do framework em um cenário do mundo real.
 
-## Visão Geral
+Princípios de Arquitetura e Features Principais
+A qualidade deste framework reside em sua arquitetura, que foi cuidadosamente planejada com foco em escalabilidade e manutenibilidade.
 
-O objetivo principal deste projeto é fornecer um exemplo prático de como automatizar testes de UI em um ambiente web, utilizando Selenium e JUnit. Demonstra a interação com elementos da página e a validação de comportamentos.
+Behavior-Driven Development (BDD) com Cucumber: Os testes são escritos em Gherkin (.feature), uma linguagem natural que descreve o comportamento do sistema. Isso torna os testes compreensíveis por toda a equipe, desde desenvolvedores até analistas de negócio.
 
-## Tecnologias e Bibliotecas Principais
+Page Object Model (POM): A interação com a UI é totalmente abstraída em classes de Page, garantindo a reutilização do código e isolando as implementações de teste das mudanças na interface do usuário.
 
-*   **Java:** Linguagem de programação utilizada para desenvolver os testes automatizados.
-*   **Selenium WebDriver:** Ferramenta para automatizar a interação com navegadores web. Permite controlar o navegador e simular ações do usuário.
-*   **JUnit:** Framework de teste para Java, utilizado para criar e executar os testes. Fornece as anotações e métodos para definir e executar casos de teste.
-*   **SQLite:** Banco de dados leve utilizado para armazenar dados de teste localmente. Permite criar conjuntos de dados controlados para os testes.
-*   **CSV (Comma-Separated Values):** Formato de arquivo utilizado para armazenar dados de teste em formato tabular. Facilita a criação e manutenção de conjuntos de dados para os testes.
-  
+Gerenciamento de WebDriver Thread-Safe para Execução Paralela: O framework foi refatorado para abandonar o uso de static WebDriver. A gestão do driver agora é feita com ThreadLocal, garantindo que cada thread de teste tenha sua própria instância isolada do navegador. Isso torna o framework pronto para execução paralela, uma prática essencial para acelerar o ciclo de feedback em pipelines de CI/CD.
 
-## Demonstração do Código
+Estratégia Avançada de Gerenciamento de Dados de Teste: Para garantir testes independentes e robustos, o framework utiliza uma abordagem híbrida:
 
-O código implementa o padrão Page Object (PO) para organizar os elementos da página e as ações que podem ser realizadas. A estrutura básica é:
+Banco de Dados SQLite: Um banco de dados local é utilizado para criar e gerenciar usuários de teste, garantindo que os testes de registro e login não dependam de um estado pré-existente e possam ser executados repetidamente sem falhas.
 
-*   **Classes Page Object:** Cada página do site (ex: `HomePage`, `LoginPage`) é representada por uma classe que contém:
-    *   Os seletores dos elementos da página (ex: botões, campos de texto).
-    *   Os métodos que interagem com esses elementos (ex: `clickLoginButton()`, `enterUsername()`).
+Leitura de CSV e Geração de Dados com Faker: Dados de produtos são lidos de arquivos CSV e dados dinâmicos (como informações de usuário) são gerados em tempo de execução com a biblioteca Faker.
 
-*   **Classes de Teste:** As classes de teste utilizam JUnit para definir os casos de teste e interagir com as classes Page Object. Os testes validam se a interface do usuário se comporta como esperado.
+Princípios de Clean Code e Separação de Responsabilidades: O código foi refatorado para seguir as melhores práticas de Clean Code. A responsabilidade de validação (Asserts) foi movida das Page Objects para a camada de Step Definitions, garantindo que as Pages cuidem apenas da interação com a UI e os Steps orquestrem e verifiquem o fluxo de negócio.
 
-## Considerações
+Relatórios Executivos com Allure Report: A comunicação dos resultados é feita através do Allure, que gera dashboards HTML interativos e detalhados, incluindo screenshots de falhas, logs e métricas de execução.
 
-*   Este projeto demonstra a automação de testes em um site existente. Não inclui acesso ou configuração do banco de dados do site.
-*   O foco é na interação com a interface do usuário e na validação do comportamento do site.
+Stack de Tecnologias
+Linguagem: Java (JDK 21)
 
-## Próximos Passos e Melhorias Potenciais
+Automação Web: Selenium WebDriver
 
-*   **Aumentar a Cobertura de Testes:** Expandir o conjunto de testes para cobrir mais funcionalidades e cenários.
-*   **Implementar Relatórios de Testes:** Adicionar um sistema de relatórios para visualizar os resultados dos testes.
-*   **Integrar com um Sistema de CI/CD:** Automatizar a execução dos testes em um pipeline de integração contínua/entrega contínua.
+Framework de Testes BDD: Cucumber
+
+Build e Dependências: Apache Maven
+
+Relatórios: Allure Report
+
+Gestão de Dados: SQLite, OpenCSV, JavaFaker
+
+Logging: SLF4J & Log4j2
+
+Runner de Teste: JUnit
+
+Como Executar o Projeto
+Pré-requisitos:
+
+Java (JDK 21) instalado
+
+Apache Maven instalado
+
+Allure Commandline instalado
+
+Executando os Testes:
+
+Clone este repositório.
+
+Abra um terminal na pasta raiz do projeto.
+
+Execute o seguinte comando Maven para rodar todos os testes:
+
+Bash
+
+mvn clean test
+Visualizando os Relatórios:
+
+Após a execução dos testes, gere e sirva o relatório do Allure com o comando:
+
+Bash
+
+allure serve
+Seu navegador abrirá automaticamente com o dashboard completo dos resultados.
