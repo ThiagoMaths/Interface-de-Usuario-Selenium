@@ -1,5 +1,6 @@
 package com.tutorialsninja.automation.stepdef;
 
+import com.tutorialsninja.automation.framework.DriverManager;
 import com.tutorialsninja.automation.pages.ForgottenPasswordPage;
 import com.tutorialsninja.automation.pages.HeadersSection;
 import com.tutorialsninja.automation.pages.LoginPage;
@@ -8,14 +9,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static com.tutorialsninja.automation.base.Base.driver;
-
 public class Login {
 
-    HeadersSection headersSection = new HeadersSection(driver);
-    LoginPage loginPage = new LoginPage(driver);
-    MyAccountPage myAccountPage = new MyAccountPage(driver);
-    ForgottenPasswordPage forgottenPasswordPage = new ForgottenPasswordPage(driver);
+    HeadersSection headersSection = new HeadersSection(DriverManager.getDriver());
+    LoginPage loginPage = new LoginPage(DriverManager.getDriver());
+    MyAccountPage myAccountPage = new MyAccountPage(DriverManager.getDriver());
+    ForgottenPasswordPage forgottenPasswordPage = new ForgottenPasswordPage(DriverManager.getDriver());
 
     @Given("I navigate to Account Login page")
     public void i_navigate_to_account_login_page() {
@@ -34,7 +33,7 @@ public class Login {
 
     @Then("I should be able login successfully")
     public void i_should_be_able_login_successfully() {
-        myAccountPage.SuccessfullyLogin();
+        myAccountPage.isMyAccountBreadDisplayed();
     }
 
     @When("I enter Email and Password invalid")

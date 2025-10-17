@@ -1,24 +1,22 @@
 package com.tutorialsninja.automation.stepdef;
 
 import com.tutorialsninja.automation.base.Base;
+import com.tutorialsninja.automation.framework.DriverManager;
 import com.tutorialsninja.automation.pages.AccountSuccessPage;
 import com.tutorialsninja.automation.pages.HeadersSection;
 import com.tutorialsninja.automation.pages.RegisterPage;
 import io.cucumber.java.en.*;
 
-import static com.tutorialsninja.automation.base.Base.driver;
-
-
 public class Register {
 
-    HeadersSection headersSection = new HeadersSection(driver);
-    RegisterPage registerPage = new RegisterPage(driver);
-    AccountSuccessPage accountSuccessPage = new AccountSuccessPage(driver);
+    HeadersSection headersSection = new HeadersSection(DriverManager.getDriver());
+    RegisterPage registerPage = new RegisterPage(DriverManager.getDriver());
+    AccountSuccessPage accountSuccessPage = new AccountSuccessPage(DriverManager.getDriver());
 
 
     @Given("^I launch the application$")
     public void i_launch_the_application() {
-        driver.get(Base.reader.getUrl());
+        DriverManager.getDriver().get(Base.reader.getUrl());
     }
 
     @And("^I navigate to Account Registration page$")

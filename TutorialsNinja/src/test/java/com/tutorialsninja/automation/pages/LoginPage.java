@@ -18,6 +18,13 @@ public class LoginPage {
     private WebDriver driver;
     private FakerUtil fakerUtil;
 
+    public LoginPage(WebDriver driver, SQLiteHandler sqLiteHandler) {
+        this.driver = driver;
+        this.sqLiteHandler = sqLiteHandler;
+        PageFactory.initElements(driver, this);
+
+    }
+
 
     @FindBy(id = "input-email")
     public WebElement emailField;

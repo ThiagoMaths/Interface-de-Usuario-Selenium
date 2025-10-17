@@ -12,7 +12,12 @@ import java.io.IOException;
 
 public class HeadersSection {
 
-    WebDriver driver;
+    private WebDriver driver;
+
+    public HeadersSection(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(xpath = "//span[text()=\"My Account\"]")
     public WebElement myAccountLink;
@@ -29,9 +34,6 @@ public class HeadersSection {
     @FindBy(css = "button[class*='btn-lg']")
     public WebElement buttonSearch;
 
-    public HeadersSection(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
 
     public void myAccountLinkClick() {
         Elements.click(driver, myAccountLink);

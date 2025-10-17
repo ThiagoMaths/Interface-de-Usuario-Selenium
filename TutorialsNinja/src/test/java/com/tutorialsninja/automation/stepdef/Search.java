@@ -1,20 +1,18 @@
 package com.tutorialsninja.automation.stepdef;
 
-import com.tutorialsninja.automation.framework.Elements;
+import com.tutorialsninja.automation.framework.DriverManager;
 import com.tutorialsninja.automation.pages.HeadersSection;
 import com.tutorialsninja.automation.pages.SearchResultPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 
 import java.io.IOException;
 
-import static com.tutorialsninja.automation.base.Base.driver;
 
 public class Search {
 
-    HeadersSection headersSection = new HeadersSection(driver);
-    SearchResultPage searchResultPage = new SearchResultPage(driver);
+    HeadersSection headersSection = new HeadersSection(DriverManager.getDriver());
+    SearchResultPage searchResultPage = new SearchResultPage(DriverManager.getDriver());
 
     @When("I search for a product")
     public void i_search_for_a_product() throws IOException {

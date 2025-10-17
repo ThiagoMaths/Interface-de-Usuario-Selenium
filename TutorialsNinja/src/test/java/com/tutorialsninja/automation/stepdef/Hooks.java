@@ -22,6 +22,7 @@ public class Hooks {
     public void setUp(Scenario scenario) {
 
         log.info("Scenario Started: {}", scenario.getName());
+        Base.reader = new PropertyFileReader();
         String browser = Base.reader.getBrowser();
         WebDriver driver = Browser.startBrowser(browser);
         DriverManager.setDriver(driver);
