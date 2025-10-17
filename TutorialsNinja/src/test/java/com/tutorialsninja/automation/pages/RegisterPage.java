@@ -1,16 +1,15 @@
 package com.tutorialsninja.automation.pages;
 
+import com.tutorialsninja.automation.framework.DriverManager;
 import com.tutorialsninja.automation.framework.Elements;
 import com.tutorialsninja.automation.utils.SQLiteHandler;
 import com.tutorialsninja.automation.utils.FakerUtil;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Arrays;
-import java.util.List;
+
 
 
 public class RegisterPage {
@@ -129,30 +128,29 @@ public class RegisterPage {
 
     }
 
-    public void WarningAlert() {
-        List<WebElement> warningElements = Arrays.asList(
-                firsNameWarning,
-                lastNameWarning,
-                emailWarning,
-                telephoneWarning,
-                passwordWarning,
-                mainWarning
-        );
-
-        List<String> warningMessages = Arrays.asList(
-                "First name error message not displayed",
-                "Last name error message not displayed",
-                "Email error message not displayed",
-                "Phone number error message not displayed",
-                "Password error message not displayed",
-                "General error message not displayed"
-        );
-
-        for (int i = 0; i < warningElements.size(); i++) {
-            Assert.assertTrue(warningMessages.get(i), Elements.isDisplayed(driver, warningElements.get(i)));
-        }
+    public boolean isFirstNameWarningDisplayed() {
+        return Elements.isDisplayed(DriverManager.getDriver(), firsNameWarning);
     }
 
+    public boolean isLastNameWarningDisplayed() {
+        return Elements.isDisplayed(DriverManager.getDriver(), lastNameWarning);
+    }
+
+    public boolean isEmailWarningDisplayed() {
+        return Elements.isDisplayed(DriverManager.getDriver(), emailWarning);
+    }
+
+    public boolean isTelephoneWarningDisplayed() {
+        return Elements.isDisplayed(DriverManager.getDriver(), telephoneWarning);
+    }
+
+    public boolean isPasswordWarningDisplayed() {
+        return Elements.isDisplayed(DriverManager.getDriver(), passwordWarning);
+    }
+
+    public boolean isMainWarningDisplayed() {
+        return Elements.isDisplayed(DriverManager.getDriver(), mainWarning);
+    }
     public void subscribe() {
         Elements.selectRadioButton(subscribeButton);
 

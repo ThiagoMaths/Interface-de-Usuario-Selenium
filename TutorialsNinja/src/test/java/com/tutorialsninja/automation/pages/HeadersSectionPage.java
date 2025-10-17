@@ -10,11 +10,11 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.IOException;
 
 
-public class HeadersSection {
+public class HeadersSectionPage {
 
     private WebDriver driver;
 
-    public HeadersSection(WebDriver driver) {
+    public HeadersSectionPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

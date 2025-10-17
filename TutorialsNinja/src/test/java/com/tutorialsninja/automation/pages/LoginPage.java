@@ -82,11 +82,6 @@ public class LoginPage {
         Elements.TypeText(driver, passwordField, passwordEmpty);
     }
 
-    public void mainWarning() {
-        Assert.assertTrue(Elements.isDisplayed(driver, mainWarning));
-
-    }
-
     public void forgottenLink() {
         Elements.click(driver, forgottenLink);
     }

@@ -2,14 +2,16 @@ package com.tutorialsninja.automation.stepdef;
 
 import com.tutorialsninja.automation.base.Base;
 import com.tutorialsninja.automation.framework.DriverManager;
+import com.tutorialsninja.automation.framework.Elements;
 import com.tutorialsninja.automation.pages.AccountSuccessPage;
-import com.tutorialsninja.automation.pages.HeadersSection;
+import com.tutorialsninja.automation.pages.HeadersSectionPage;
 import com.tutorialsninja.automation.pages.RegisterPage;
 import io.cucumber.java.en.*;
+import org.junit.Assert;
 
 public class Register {
 
-    HeadersSection headersSection = new HeadersSection(DriverManager.getDriver());
+    HeadersSectionPage headersSectionPage = new HeadersSectionPage(DriverManager.getDriver());
     RegisterPage registerPage = new RegisterPage(DriverManager.getDriver());
     AccountSuccessPage accountSuccessPage = new AccountSuccessPage(DriverManager.getDriver());
 
@@ -21,7 +23,7 @@ public class Register {
 
     @And("^I navigate to Account Registration page$")
     public void i_navigate_to_Account_Registration_page() {
-        headersSection.myAccountToRegister();
+        headersSectionPage.myAccountToRegister();
     }
 
     @When("^I provide all the below valid details$")
@@ -46,7 +48,8 @@ public class Register {
 
     @Then("^I should see that the User account has successfully created$")
     public void i_should_see_that_the_User_account_has_created() {
-        accountSuccessPage.isCreatedRegister();
+        Assert.assertTrue(Elements.isDisplayed(DriverManager.getDriver(), accountSuccessPage.successBread));
+
     }
 
     @Then("I should see that the User account is not created")
@@ -56,8 +59,14 @@ public class Register {
 
     @And("I should see the error message informing the user to fill the mandatory fields")
     public void i_should_see_the_error_message_informing_the_user_to_fill_the_mandatory_fields() {
-        registerPage.WarningAlert();
-    }
+        RegisterPage registerPage = new RegisterPage(DriverManager.getDriver());
+
+        Assert.assertTrue("First name error message not displayed.", registerPage.isFirstNameWarningDisplayed());
+        Assert.assertTrue("Last name error message not displayed.", registerPage.isLastNameWarningDisplayed());
+        Assert.assertTrue("Email error message not displayed.", registerPage.isEmailWarningDisplayed());
+        Assert.assertTrue("Telephone error message not displayed.", registerPage.isTelephoneWarningDisplayed());
+        Assert.assertTrue("Password error message not displayed.", registerPage.isPasswordWarningDisplayed());
+        Assert.assertTrue("Main warning message not displayed.", registerPage.isMainWarningDisplayed());    }
 
     @When("I subscribe to Newsletter")
     public void i_subscribe_to_newsletter() {

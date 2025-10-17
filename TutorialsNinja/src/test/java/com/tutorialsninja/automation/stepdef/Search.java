@@ -1,7 +1,7 @@
 package com.tutorialsninja.automation.stepdef;
 
 import com.tutorialsninja.automation.framework.DriverManager;
-import com.tutorialsninja.automation.pages.HeadersSection;
+import com.tutorialsninja.automation.pages.HeadersSectionPage;
 import com.tutorialsninja.automation.pages.SearchResultPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,12 +11,12 @@ import java.io.IOException;
 
 public class Search {
 
-    HeadersSection headersSection = new HeadersSection(DriverManager.getDriver());
+    HeadersSectionPage headersSectionPage = new HeadersSectionPage(DriverManager.getDriver());
     SearchResultPage searchResultPage = new SearchResultPage(DriverManager.getDriver());
 
     @When("I search for a product")
     public void i_search_for_a_product() throws IOException {
-        headersSection.searchProducts();
+        headersSectionPage.searchProducts();
     }
 
     @Then("I should see the product in the search results")
@@ -26,7 +26,7 @@ public class Search {
 
     @When("I search for a product missing")
     public void iSearchForAProductMissing() throws IOException {
-        headersSection.searchProductsInvalid();
+        headersSectionPage.searchProductsInvalid();
     }
 
     @Then("I should see the page displaying the message")

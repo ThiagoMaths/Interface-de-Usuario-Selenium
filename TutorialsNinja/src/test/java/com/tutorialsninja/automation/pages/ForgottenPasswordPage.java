@@ -1,18 +1,12 @@
 package com.tutorialsninja.automation.pages;
 
-import com.tutorialsninja.automation.base.Base;
 import com.tutorialsninja.automation.framework.Elements;
 import com.tutorialsninja.automation.utils.FakerUtil;
 import com.tutorialsninja.automation.utils.SQLiteHandler;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.Map;
-
-import static com.tutorialsninja.automation.base.Base.driver;
 
 public class ForgottenPasswordPage {
 
@@ -52,11 +46,6 @@ public class ForgottenPasswordPage {
         String emailInvalid = fakerUtil.email();
         Elements.TypeText(driver, email, emailInvalid);
         button();
-
-    }
-
-    public void forgottenAlert() {
-        Assert.assertTrue(Elements.isDisplayed(driver, mainWarning));
 
     }
 
